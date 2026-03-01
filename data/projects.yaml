@@ -1,0 +1,16 @@
+- name: Smart Posture Analyzer for Exercise
+  link: GitHub
+  description: Android App to monitor workout accuracy
+  highlights:
+    - Developed an Android app to analyze body posture in real-time
+    - Used OpenCV and Google Mediapipe to extract key body landmarks
+    - Implemented an on-device LSTM-based Recurrent Neural Network using TensorFlow to process body posture
+    - "Technologies used: Python, OpenCV, NumPy, Pandas, TensorFlow"
+- name: Fine-Tuning Gemma 3 for Neo4j Cypher Query Generation
+  link: GitHub
+  description: Parameter-Efficient Fine-Tuning with QLoRA
+  highlights:
+    - Fine-tuned the Gemma 3 model using QLoRA to generate accurate Neo4j Cypher queries from natural language prompts
+    - Prepared and curated a custom dataset mapping natural language intents to Cypher query structures aligned with graph schema
+    - Optimized training using parameter-efficient fine-tuning and quantization for resource-constrained environments
+    - "Technologies used: Python, QLoRA, Hugging Face Transformers, Neo4j"

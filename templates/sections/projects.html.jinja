@@ -1,0 +1,27 @@
+<section id="projects">
+    <h2>Projects</h2>
+
+    {% if projects %}
+    {% for proj in projects %}
+    <div class="project-item">
+        <div class="exp-header">
+            <h3>{{ proj.name }}</h3>
+        </div>
+
+        {% if proj.description %}
+        <p>{{ proj.description }}</p>
+        {% endif %}
+
+        {% if proj.highlights %}
+        <ul>
+            {% for h in proj.highlights %}
+            <li>{{ h }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <p><em>(no projects defined)</em></p>
+    {% endif %}
+</section>

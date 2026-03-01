@@ -34,6 +34,7 @@ accomplishments = load_yaml(DATA_DIR / "accomplishments.yaml")
 education = load_yaml(DATA_DIR / "education.yaml")
 experience = load_yaml(DATA_DIR / "experience.yaml")
 publications = load_yaml(DATA_DIR / "publications.yaml")
+projects = load_yaml(DATA_DIR / "projects.yaml")
 
 
 env = Environment(
@@ -60,6 +61,7 @@ def render_resume() -> str:
         "education": education,
         "experience": experience,
         "publications": publications,
+        "projects": projects,
     }
 
     template = env.get_template("resume.html.jinja")
