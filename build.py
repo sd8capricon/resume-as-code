@@ -1,3 +1,6 @@
+import argparse
+import shutil
+import sys
 from pathlib import Path
 
 import yaml
@@ -10,70 +13,87 @@ TEMPLATES_DIR = BASE_DIR / "templates"
 
 # output directory for generated files
 DIST_DIR = BASE_DIR / "dist"
-
-# ensure dist exists when script is run
 DIST_DIR.mkdir(exist_ok=True)
 
 
 def load_yaml(path: Path):
-    """Load a single YAML file and return the parsed value.
-
-    ``path`` may be either a full path or a filename relative to the
-    `data` directory.  This is a thin wrapper around :func:`yaml.safe_load`.
-    """
-
+    """Load YAML file (absolute or relative to data/)"""
     if not path.is_absolute():
         path = DATA_DIR / path
+
+    if not path.exists():
+        raise FileNotFoundError(f"YAML file not found: {path}")
 
     with path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
 
-resume = load_yaml(DATA_DIR / "resume.yaml")
+def create_env(template_dir: Path):
+    return Environment(
+        loader=FileSystemLoader(str(template_dir)),
+        autoescape=select_autoescape(["html", "xml"]),
+        trim_blocks=True,
+        lstrip_blocks=True,
+    )
 
 
-env = Environment(
-    loader=FileSystemLoader(str(TEMPLATES_DIR)),
-    autoescape=select_autoescape(["html", "xml"]),
-    trim_blocks=True,
-    lstrip_blocks=True,
-)
+def render_template(yaml_path: Path, template_path: Path) -> str:
+    """Render given template using given YAML"""
+
+    # Resolve YAML
+    data = load_yaml(yaml_path)
+
+    # Resolve template location
+    if not template_path.is_absolute():
+        template_path = TEMPLATES_DIR / template_path
+
+    if not template_path.exists():
+        raise FileNotFoundError(f"Template not found: {template_path}")
+
+    env = create_env(template_path.parent)
+
+    template = env.get_template(template_path.name)
+
+    # expose yaml as `resume`
+    return template.render(data)
 
 
-def render_resume() -> str:
-    """Render the top-level resume template with the loaded YAML data.
+def main():
+    parser = argparse.ArgumentParser(
+        description="Render resume from YAML + Jinja template"
+    )
 
-    Returns the generated HTML string; callers can print it, write it to
-    a file, or pass it to a converter (e.g. pandoc) to produce LaTeX/PDF.
+    parser.add_argument(
+        "yaml",
+        nargs="?",
+        default="resume.yaml",
+        help="YAML data file (default: resume.yaml)",
+    )
 
-    The context keys mirror the YAML filenames so they are available in
-    templates by name.
-    """
+    parser.add_argument(
+        "template",
+        nargs="?",
+        default="resume.html.jinja",
+        help="Jinja template file (default: resume.html.jinja)",
+    )
 
-    template = env.get_template("resume.html.jinja")
-    return template.render(resume)
+    parser.add_argument(
+        "-o",
+        "--output",
+        default="resume.html",
+        help="Output HTML filename (default: dist/resume.html)",
+    )
 
+    args = parser.parse_args()
 
-if __name__ == "__main__":
-    # simple CLI: write output to stdout or file
-    import shutil
-    import sys
+    output_html = render_template(Path(args.yaml), Path(args.template))
 
-    output = render_resume()
+    out_path = Path(args.output)
+    if not out_path.is_absolute():
+        out_path = DIST_DIR / out_path
 
-    # ensure dist directory exists before writing files
     DIST_DIR.mkdir(exist_ok=True)
-
-    # determine target html path; if user passed one it is treated as filename
-    if len(sys.argv) > 1:
-        out_path = Path(sys.argv[1])
-        # if user provided just a name, put it inside dist
-        if not out_path.is_absolute():
-            out_path = DIST_DIR / out_path
-    else:
-        out_path = DIST_DIR / "resume.html"
-
-    out_path.write_text(output, encoding="utf-8")
+    out_path.write_text(output_html, encoding="utf-8")
 
     # copy stylesheet into dist
     css_src = BASE_DIR / "styles" / "style.css"
@@ -83,7 +103,10 @@ if __name__ == "__main__":
     else:
         sys.stderr.write(f"warning: stylesheet {css_src} not found\n")
 
-    # also inform the user of what was written
     print(f"wrote resume to {out_path}")
     if css_dest.exists():
         print(f"copied stylesheet to {css_dest}")
+
+
+if __name__ == "__main__":
+    main()
