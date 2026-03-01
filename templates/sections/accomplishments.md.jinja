@@ -1,0 +1,18 @@
+## Accomplishments
+
+{% if accomplishments %}
+{% for ac in accomplishments %}
+### {{ ac.title }}
+*{{ ac.issuer }}*
+
+{% if ac.highlights %}
+{% for h in ac.highlights %}
+- {{ h }}
+{% endfor %}
+{% endif %}
+
+{% endfor %}
+{% else %}
+*(no accomplishments defined)*
+{% endif %}
+

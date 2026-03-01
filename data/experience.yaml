@@ -1,0 +1,18 @@
+- company: Prorigo Software
+  location: Pune
+  link: https://www.prorigo.com
+  roles:
+    - title: Software Engineer II
+      start: "2025"
+      end: Present
+      highlights:
+        - Enhanced graph-based RAG with agentic capabilities using LangChain and LangGraph, enabling robust Cypher query generation over knowledge graphs.
+        - Developed multiple AI agents focused on the PLM domain.
+        - Owned end-to-end deployments by containerizing the application, deploying to Kubernetes clusters and Azure VMs, and automating CI/CD pipelines.
+    - title: Trainee Software Engineer
+      start: "2024"
+      end: "2025"
+      highlights:
+        - Built a graph-based RAG system for Aras PLM using Microsoft Semantic Kernel and Neo4j.
+        - Developed a multimodal ingestion pipeline using LlamaIndex to transform structured and unstructured data into knowledge graphs.
+        - Developed a FastAPI-based REST API exposing RAG and agent capabilities with secure authentication.
