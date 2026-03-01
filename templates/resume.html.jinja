@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="resume-header">
+        <div class="left">
+            <h1>Siddharth Dhaigude</h1>
+            <p>siddharthdhaigude.me</p>
+        </div>
+
+        <div class="right">
+            <p>Email: siddharthdhaigude@gmail.com</p>
+            <p>Mobile: +917506575930</p>
+            <p>Github: sd8capricon</p>
+        </div>
+    </header>
+
+    {% include "sections/about.html.jinja" %}
+
+    {% include "sections/education.html.jinja" %}
+
+    {% include "sections/experience.html.jinja" %}
+
+    {% include "sections/publications.html.jinja" %}
+
+    {% include "sections/accomplishments.html.jinja" %}
+</body>
+
+</html>

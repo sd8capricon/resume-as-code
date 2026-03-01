@@ -1,0 +1,9 @@
+<section id="about">
+  <h2>About Me</h2>
+
+  {% if about %}
+  <p>{{ about.description }}</p>
+  {% else %}
+  <p><em>(no about defined)</em></p>
+  {% endif %}
+</section>

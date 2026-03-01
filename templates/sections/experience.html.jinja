@@ -1,0 +1,38 @@
+<section id="experience">
+    <h2>Experience</h2>
+
+    {% if experience %}
+    {% for entry in experience %}
+    <div class="experience-entry">
+
+        <div class="exp-header">
+            <h3>{{ entry.company }} - {{ entry.location }}</h3>
+
+            {% if entry.link %}
+            <a href="{{ entry.link }}" target="_blank">Website</a>
+            {% endif %}
+        </div>
+
+        {% for role in entry.roles %}
+        <div class="role">
+            <div class="role-header">
+                <h4>{{ role.title }}</h4>
+                <span>{{ role.start }} - {{ role.end }}</span>
+            </div>
+
+            {% if role.highlights %}
+            <ul>
+                {% for bullet in role.highlights %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endfor %}
+    {% else %}
+    <p><em>(no work experience listed)</em></p>
+    {% endif %}
+</section>

@@ -1,0 +1,22 @@
+<section id="accomplishments">
+    <h2>Accomplishments</h2>
+
+    {% if accomplishments %}
+    {% for ac in accomplishments %}
+    <div class="accomplishment">
+        <h3>{{ ac.title }}</h3>
+        <p><em>{{ ac.issuer }}</em></p>
+
+        {% if ac.highlights %}
+        <ul>
+            {% for h in ac.highlights %}
+            <li>{{ h }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <p><em>(no accomplishments defined)</em></p>
+    {% endif %}
+</section>

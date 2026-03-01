@@ -1,9 +1,0 @@
-## Publications
-
-{% if publications %}
-{% for pub in publications %}
-- {{ pub.publication }}{% if pub.link %} ([link]({{ pub.link }})){% endif %}
-{% endfor %}
-{% else %}
-*(no publications available)*
-{% endif %}

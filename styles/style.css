@@ -1,0 +1,166 @@
+/* A4 Page Setup */
+@page {
+    size: A4;
+    margin: 15mm;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    max-width: 800px;
+    line-height: 1.35;
+    color: #222;
+    font-size: 13px;
+}
+
+/* Headings */
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 2px;
+}
+
+h2 {
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+h3 {
+    font-size: 14px;
+    margin: 2px 0;
+}
+
+h4 {
+    font-size: 13px;
+    margin: 2px 0;
+}
+
+/* Header */
+
+.resume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.resume-header h1 {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.resume-header .right {
+    text-align: right;
+    font-size: 12px;
+}
+
+/* Sections */
+
+section {
+    margin-bottom: 8px;
+}
+
+/* Rows */
+
+.edu-row,
+.exp-header,
+.role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Spacing */
+
+.education-item,
+.experience-entry,
+.accomplishment {
+    margin-bottom: 6px;
+}
+
+.role {
+    margin-top: 4px;
+}
+
+/* Text hierarchy */
+
+strong {
+    font-size: 13px;
+}
+
+em,
+span {
+    font-size: 12px;
+    color: #555;
+}
+
+/* Lists */
+
+ul {
+    margin: 3px 0 0 16px;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 2px;
+}
+
+/* Publications */
+
+.publication-item {
+    display: block;
+    line-height: 1.35;
+}
+
+.publication-link {
+    margin-left: 6px;
+    text-decoration: none;
+    color: #000;
+    white-space: nowrap;
+}
+
+/* Links */
+
+a {
+    text-decoration: none;
+    color: #000;
+    font-size: 12px;
+}
+
+/* Paragraphs */
+
+p {
+    margin: 2px 0;
+}
+
+/* Print Optimization */
+
+@media print {
+    body {
+        font-size: 11.5px;
+        line-height: 1.3;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 15px;
+    }
+
+    h3 {
+        font-size: 13px;
+    }
+
+    h4 {
+        font-size: 12px;
+    }
+
+    a {
+        color: black;
+    }
+}

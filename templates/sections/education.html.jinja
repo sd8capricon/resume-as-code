@@ -1,0 +1,17 @@
+<section id="education">
+    <h2>Education</h2>
+
+    {% for edu in education %}
+    <div class="education-item">
+        <div class="edu-row">
+            <strong>{{ edu.degree }}</strong>
+            <span>{{ edu.start }} - {{ edu.end[2:] }}</span>
+        </div>
+
+        <div class="edu-row">
+            <em>{{ edu.institution }}</em>
+            <span>CGPA: {{ edu.cgpa }}</span>
+        </div>
+    </div>
+    {% endfor %}
+</section>

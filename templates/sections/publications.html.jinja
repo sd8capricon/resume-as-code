@@ -1,0 +1,17 @@
+<section id="publications">
+    <h2>Publications</h2>
+    {% if publications %}
+    <ul class="publication-list">
+        {% for pub in publications %}
+        <li class="publication-item">
+            {{ pub.publication }}
+            {% if pub.link %}
+            <a href="{{ pub.link }}" target="_blank" class="publication-link">View</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p><em>(no publications available)</em></p>
+    {% endif %}
+</section>
