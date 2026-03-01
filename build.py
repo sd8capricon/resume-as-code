@@ -1,6 +1,6 @@
-import yaml
 from pathlib import Path
 
+import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 # base directory for project
@@ -29,12 +29,7 @@ def load_yaml(path: Path):
         return yaml.safe_load(f)
 
 
-about = load_yaml(DATA_DIR / "about.yaml")
-accomplishments = load_yaml(DATA_DIR / "accomplishments.yaml")
-education = load_yaml(DATA_DIR / "education.yaml")
-experience = load_yaml(DATA_DIR / "experience.yaml")
-publications = load_yaml(DATA_DIR / "publications.yaml")
-projects = load_yaml(DATA_DIR / "projects.yaml")
+resume = load_yaml(DATA_DIR / "resume.yaml")
 
 
 env = Environment(
@@ -55,23 +50,14 @@ def render_resume() -> str:
     templates by name.
     """
 
-    context: dict = {
-        "about": about,
-        "accomplishments": accomplishments,
-        "education": education,
-        "experience": experience,
-        "publications": publications,
-        "projects": projects,
-    }
-
     template = env.get_template("resume.html.jinja")
-    return template.render(**context)
+    return template.render(resume)
 
 
 if __name__ == "__main__":
     # simple CLI: write output to stdout or file
-    import sys
     import shutil
+    import sys
 
     output = render_resume()
 

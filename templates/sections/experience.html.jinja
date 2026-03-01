@@ -6,10 +6,10 @@
     <div class="experience-entry">
 
         <div class="exp-header">
-            <h3>{{ entry.company }} - {{ entry.location }}</h3>
+            <h3>{{ entry.company }}</h3>
 
             {% if entry.link %}
-            <a href="{{ entry.link }}" target="_blank">Website</a>
+            {{ entry.location }}
             {% endif %}
         </div>
 
