@@ -1,0 +1,17 @@
+<section id="skills">
+    <h2>Skills</h2>
+
+    {% if skills %}
+    {% for skill in skills %}
+    <div class="skill-item">
+        {% if skill.content %}
+        <p><strong>{{ skill.title }}:</strong> {{ skill.content }}</p>
+        {% elif skill.items %}
+        <p><strong>{{ skill.title }}:</strong> {{ skill.items | join(", ") }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% else %}
+    <p><em>(no skills listed)</em></p>
+    {% endif %}
+</section>
