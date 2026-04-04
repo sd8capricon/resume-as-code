@@ -24,16 +24,16 @@ experience:
         start: "2025"
         end: Present
         highlights:
-          - Enhanced graph-based RAG with agentic capabilities using LangChain and LangGraph, enabling robust Cypher query generation over knowledge graphs.
-          - Developed multiple AI agents focused on the PLM domain.
-          - Owned end-to-end deployments by containerizing the application, deploying to Kubernetes clusters and Azure VMs, and automating CI/CD pipelines.
+          - Enhanced a graph-based Retrieval-Augmented Generation (RAG) system by integrating agentic capabilities using LangChain and LangGraph, enabling more accurate and context-aware Cypher query generation over complex knowledge graphs.
+          - Designed and developed specialized AI agents tailored to address domain-specific challenges within Product Lifecycle Management (PLM), improving automation and decision support.
+          - Owned end-to-end deployment processes, including containerizing applications, orchestrating deployments on Kubernetes clusters and Azure Virtual Machines, and implementing automated CI/CD pipelines for streamlined delivery.
       - title: Trainee Software Engineer
         start: "2024"
         end: "2025"
         highlights:
-          - Built a graph-based RAG system for Aras PLM using Microsoft Semantic Kernel and Neo4j.
-          - Developed a multimodal ingestion pipeline using LlamaIndex to transform structured and unstructured data into knowledge graphs.
-          - Developed a FastAPI-based REST API exposing RAG and agent capabilities with secure authentication.
+          - Built a graph-based RAG system for Aras PLM leveraging Microsoft Semantic Kernel and Neo4j, enabling efficient knowledge retrieval and contextual reasoning.
+          - Developed a multimodal data ingestion pipeline using LlamaIndex to process and transform both structured and unstructured data into interconnected knowledge graphs.
+          - Implemented a FastAPI-based RESTful API to expose RAG and AI agent functionalities, incorporating secure authentication mechanisms to ensure safe and reliable access.
 
 skills:
   # Skills template:
@@ -52,7 +52,7 @@ accomplishments:
   - title: Finalist - Smart India Hackathon 2023
     issuer: Ministry of Education, Government of India
     highlights:
-      - Our team designed a language translation tool that converts English to Hindi, aimed at improving digital accessibility.
+      - Designed and developed an English-to-Hindi language translation system using natural language processing techniques, focused on improving digital accessibility and enabling seamless multilingual support across web-based platforms.
       - The project was selected for presentation by the Ministry of Power, it was intended for use across government organization websites.
 
 publications:

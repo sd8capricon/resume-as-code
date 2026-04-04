@@ -24,8 +24,8 @@ h2 {
     font-size: 14px;
     border-bottom: 1px solid #ccc;
     padding-bottom: 2px;
-    margin-top: 14px;
-    margin-bottom: 7px;
+    margin-top: 11px;
+    margin-bottom: 5px;
     line-height: 1.2;
 }
 
@@ -47,7 +47,7 @@ h4 {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
 .resume-header h1 {
@@ -63,7 +63,7 @@ h4 {
 /* Sections */
 
 section {
-    margin-bottom: 11px;
+    margin-bottom: 7px;
     break-inside: avoid;
 }
 
@@ -86,12 +86,12 @@ section {
 .project-item,
 .publication-item,
 .skill-item {
-    margin-bottom: 7px;
+    margin-bottom: 4px;
     break-inside: avoid;
 }
 
 .role {
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
 /* Text hierarchy */
@@ -109,12 +109,12 @@ span {
 /* Lists */
 
 ul {
-    margin: 5px 0 0 16px;
+    margin: 3px 0 0 16px;
     padding: 0;
 }
 
 li {
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     line-height: 1.25;
 }
 
@@ -143,7 +143,7 @@ a {
 /* Paragraphs */
 
 p {
-    margin: 4px 0;
+    margin: 2px 0;
     line-height: 1.25;
 }
 
@@ -152,7 +152,7 @@ p {
 @media print {
     body {
         font-size: 10.8px;
-        line-height: 1.24;
+        line-height: 1.22;
     }
 
     h1 {
