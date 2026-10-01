@@ -67,6 +67,9 @@ This will:
 - Apply the `resume.html.jinja` template
 - Output the result to `dist/resume.html`
 - Copy `styles/style.css` to `dist/style.css`
+- Generate `dist/resume.pdf` using headless Chromium
+
+Choose an output format with `--format html`, `--format pdf`, or `--format both` (the default). For example, `uv run build.py --format pdf -o custom-name` writes `dist/custom-name.pdf`. The legacy `--no-pdf` option is equivalent to `--format html`.
 
 ### Custom YAML and Template
 

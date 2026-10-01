@@ -1,6 +1,7 @@
 import argparse
 import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 import yaml
@@ -99,7 +100,14 @@ def main():
         "-o",
         "--output",
         default="resume.html",
-        help="Output HTML filename (default: dist/resume.html)",
+        help="Output filename (default: dist/resume.html; extension follows --format)",
+    )
+
+    parser.add_argument(
+        "--format",
+        choices=("html", "pdf", "both"),
+        default="both",
+        help="Output format: html, pdf, or both (default: both)",
     )
 
     parser.add_argument(
@@ -110,30 +118,56 @@ def main():
 
     args = parser.parse_args()
 
+    if args.no_pdf:
+        if args.format == "pdf":
+            parser.error("--no-pdf cannot be combined with --format pdf")
+        args.format = "html"
+
     output_html = render_template(Path(args.yaml), Path(args.template))
 
     out_path = Path(args.output)
     if not out_path.is_absolute():
         out_path = DIST_DIR / out_path
 
-    DIST_DIR.mkdir(exist_ok=True)
-    out_path.write_text(output_html, encoding="utf-8")
-
-    # copy stylesheet into dist
-    css_src = BASE_DIR / "styles" / "style.css"
-    css_dest = DIST_DIR / "style.css"
-    if css_src.exists():
-        shutil.copy2(css_src, css_dest)
-    else:
-        sys.stderr.write(f"warning: stylesheet {css_src} not found\n")
-
-    print(f"wrote resume to {out_path}")
-    if css_dest.exists():
-        print(f"copied stylesheet to {css_dest}")
-
-    if not args.no_pdf:
+    output_format = args.format
+    if output_format == "pdf":
         pdf_path = out_path.with_suffix(".pdf")
-        render_pdf(out_path, pdf_path)
+        html_path = None
+    else:
+        html_path = out_path.with_suffix(".html")
+        pdf_path = html_path.with_suffix(".pdf")
+
+    DIST_DIR.mkdir(exist_ok=True)
+    if html_path is not None:
+        html_path.parent.mkdir(parents=True, exist_ok=True)
+        html_path.write_text(output_html, encoding="utf-8")
+
+        # Copy stylesheet beside the HTML output.
+        css_src = BASE_DIR / "styles" / "style.css"
+        css_dest = html_path.parent / "style.css"
+        if css_src.exists():
+            shutil.copy2(css_src, css_dest)
+        else:
+            sys.stderr.write(f"warning: stylesheet {css_src} not found\n")
+
+        print(f"wrote resume to {html_path}")
+        if css_dest.exists():
+            print(f"copied stylesheet to {css_dest}")
+
+    if output_format in ("pdf", "both"):
+        pdf_path.parent.mkdir(parents=True, exist_ok=True)
+        if html_path is not None:
+            render_pdf(html_path, pdf_path)
+        else:
+            # Chromium prints a local HTML file, so stage it with its stylesheet.
+            with tempfile.TemporaryDirectory() as temp_dir:
+                temp_dir = Path(temp_dir)
+                temp_html = temp_dir / "resume.html"
+                temp_html.write_text(output_html, encoding="utf-8")
+                css_src = BASE_DIR / "styles" / "style.css"
+                if css_src.exists():
+                    shutil.copy2(css_src, temp_dir / "style.css")
+                render_pdf(temp_html, pdf_path)
         print(f"wrote pdf to {pdf_path}")
 
 
