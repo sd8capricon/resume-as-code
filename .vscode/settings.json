@@ -1,0 +1,5 @@
+{
+    "yaml.disableSchemaDetection": [
+        "file:///Users/sd8capricon/Developer/test/resume/data/resume.yaml"
+    ]
+}
