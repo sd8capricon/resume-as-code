@@ -1,0 +1,73 @@
+about:
+  name: Siddharth Dhaigude
+  website: siddharthdhaigude.me
+  email: siddharthdhaigude@gmail.com
+  mobile: "+917506575930"
+  github:
+    username: sd8capricon
+    link: https://github.com/sd8capricon
+
+education:
+  - institution: Mumbai University - Don Bosco Institute of Technology
+    degree: B.E. Computer Engineering (Hons. Data Science)
+    start: "2020"
+    end: "2024"
+    cgpa: "8.83/10"
+
+experience:
+  - company: Prorigo Software
+    location: Pune
+    link: https://www.prorigo.com
+    roles:
+      - title: Software Engineer II
+        start: "2025"
+        end: Present
+        highlights:
+          - Owned deployment end to end - containerized services, authored Helm charts, deployed to Kubernetes and Azure VMs, and built Azure DevOps CI/CD pipelines; integrated OpenTelemetry for observability.
+          - Built Python tools and LangGraph agent workflows for Aras PLM that answer natural-language data queries and perform change/impact analysis, returning results in under 30 seconds.
+          - Extended a graph-based RAG system with agentic Cypher query generation using LangChain and LangGraph over Neo4j knowledge graphs.
+          - Implemented vector search and chat/session state storage on MongoDB and Azure Cosmos DB.
+      - title: Trainee Software Engineer
+        start: "2024"
+        end: "2025"
+        highlights:
+          - Built a FastAPI REST service exposing RAG and agent capabilities with OAuth 2.0/OIDC authentication, streaming responses, and async processing for multiple users.
+          - Developed a multimodal ingestion pipeline with LlamaIndex that turns structured and unstructured data into interconnected knowledge graphs, running ingestion jobs through RabbitMQ.
+          - Built a graph-based RAG system for Aras PLM using Microsoft Semantic Kernel and Neo4j, combining Cypher graph traversal with vector/hybrid search.
+
+skills:
+  - title: Backend
+    content: Python, FastAPI, REST APIs, OAuth 2.0/OIDC, RabbitMQ, JavaScript
+  - title: Cloud & DevOps
+    content: Docker, Kubernetes, Helm, Azure DevOps, GitHub Actions, OpenTelemetry, Azure
+  - title: Databases
+    content: Neo4j (Cypher), MongoDB, Azure Cosmos DB, Vector Search, SQL
+  - title: AI & LLM
+    content: AI Agents, RAG, Prompt Engineering, LangGraph, LangChain, Semantic Kernel, LlamaIndex
+
+accomplishments:
+  - title: Finalist - Smart India Hackathon 2023
+    issuer: Ministry of Education, Government of India
+    highlights:
+      - Designed and developed an English-to-Hindi language translation system using natural language processing techniques, focused on improving digital accessibility and enabling seamless multilingual support across web-based platforms.
+      - The project was selected for presentation by the Ministry of Power, it was intended for use across government organization websites.
+
+publications:
+  - publication: 'S. Dhaigude, H. Panigrahi, S. Godse and P. Shaikh, "Smart Posture Analyzer For Exercise," 2023 6th International Conference on Advances in Science and Technology (ICAST), Mumbai, India, 2023, pp. 389-394, DOI: 10.1109/ICAST59062.2023.10455069.'
+    link: https://ieeexplore.ieee.org/document/10455069
+
+projects:
+  - name: Smart Posture Analyzer for Exercise
+    description: Android App to monitor workout accuracy
+    highlights:
+      - Developed an Android app to analyze body posture in real-time
+      - Used OpenCV and Google Mediapipe to extract key body landmarks
+      - Implemented an on-device LSTM-based Recurrent Neural Network using TensorFlow to process body posture
+      - "Technologies used: Python, OpenCV, NumPy, Pandas, TensorFlow"
+  - name: Fine-Tuning Gemma 3 for Neo4j Cypher Query Generation
+    description: Parameter-Efficient Fine-Tuning with QLoRA
+    highlights:
+      - Fine-tuned the Gemma 3 model using QLoRA to generate accurate Neo4j Cypher queries from natural language prompts
+      - Prepared and curated a custom dataset mapping natural language intents to Cypher query structures aligned with graph schema
+      - Optimized training using parameter-efficient fine-tuning and quantization for resource-constrained environments
+      - "Technologies used: Python, QLoRA, Hugging Face Transformers, Neo4j"
