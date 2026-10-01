@@ -8,8 +8,8 @@ Keep `AGENTS.md` and `CLAUDE.md` in sync: when editing guidance in either file, 
 
 ## Build and Review
 
-- `uv sync` installs the dependencies (Python 3.13+); `pip install -r requirements.txt` is the pip alternative.
-- `uv run build.py` renders the default YAML and template to `dist/resume.html` and copies the stylesheet alongside it.
+- `uv sync` installs the dependencies (Python 3.13+); `pip install -r requirements.txt` is the pip alternative. PDF output needs a one-time `uv run playwright install chromium`.
+- `uv run build.py` renders the default YAML and template to `dist/resume.html` and copies the stylesheet alongside it, then prints an A4 PDF (`dist/resume.pdf`) via headless Chromium; pass `--no-pdf` to skip the PDF.
 - `uv run build.py other.yaml other.jinja -o preview.html` renders custom inputs. Relative YAML and template paths resolve under `data/` and `templates/`; a relative output path resolves under `dist/`.
 
 There is no automated test, formatter, or linter configured. After changes, rebuild and inspect `dist/resume.html` in a browser, including print preview; the CSS targets a single A4 page, so check for overflow or an extra page.

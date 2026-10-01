@@ -58,6 +58,24 @@ def render_template(yaml_path: Path, template_path: Path) -> str:
     return template.render(data)
 
 
+def render_pdf(html_path: Path, pdf_path: Path):
+    """Print the rendered HTML to an A4 PDF using headless Chromium"""
+    # imported lazily so HTML-only builds don't need playwright
+    from playwright.sync_api import sync_playwright
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        page = browser.new_page()
+        page.goto(html_path.resolve().as_uri())
+        page.pdf(
+            path=str(pdf_path),
+            format="A4",
+            print_background=True,
+            prefer_css_page_size=True,
+        )
+        browser.close()
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Render resume from YAML + Jinja template"
@@ -84,6 +102,12 @@ def main():
         help="Output HTML filename (default: dist/resume.html)",
     )
 
+    parser.add_argument(
+        "--no-pdf",
+        action="store_true",
+        help="Skip generating the A4 PDF next to the HTML output",
+    )
+
     args = parser.parse_args()
 
     output_html = render_template(Path(args.yaml), Path(args.template))
@@ -106,6 +130,11 @@ def main():
     print(f"wrote resume to {out_path}")
     if css_dest.exists():
         print(f"copied stylesheet to {css_dest}")
+
+    if not args.no_pdf:
+        pdf_path = out_path.with_suffix(".pdf")
+        render_pdf(out_path, pdf_path)
+        print(f"wrote pdf to {pdf_path}")
 
 
 if __name__ == "__main__":
