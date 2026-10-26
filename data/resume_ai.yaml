@@ -23,7 +23,7 @@ experience:
     link: https://www.prorigo.com
     roles:
       - title: Software Engineer II
-        start: "2025"
+        start: Apr 2025
         end: Present
         highlights:
           - Designed LangGraph agent workflows and the Python tools behind them for Aras PLM, letting users query product data in natural language and run change/impact analysis, with the agentic loop returning answers in under 30 seconds.
@@ -31,12 +31,21 @@ experience:
           - Implemented vector search and chat/session state for agents on MongoDB and Azure Cosmos DB.
           - Owned deployment end to end - containerized services, authored Helm charts, deployed to Kubernetes and Azure VMs, and built Azure DevOps CI/CD pipelines; integrated OpenTelemetry for observability.
       - title: Trainee Software Engineer
-        start: "2024"
-        end: "2025"
+        start: Nov 2024
+        end: Mar 2025
         highlights:
           - Built a graph-based RAG system for Aras PLM using Microsoft Semantic Kernel and Neo4j, combining Cypher graph traversal with vector/hybrid search for knowledge retrieval.
           - Developed a multimodal ingestion pipeline with LlamaIndex that turns structured and unstructured data into interconnected knowledge graphs, running ingestion jobs through RabbitMQ.
           - Built a FastAPI REST service exposing RAG and agent capabilities with OAuth 2.0/OIDC authentication, streaming responses, and async processing for multiple users.
+  - company: Watershed Organisation Trust (WOTR)
+    roles:
+      - title: Data Science Intern
+        start: Oct 2023
+        end: Apr 2024
+        highlights:
+          - Processed and analyzed geospatial data using Google Earth Engine and its JavaScript API to support informed decision-making.
+          - Developed a TensorFlow deep learning model to predict wheat yield in Gangapur, Maharashtra, collaborating with local farmers to collect real-world survey data.
+          - Performed land use/land cover (LULC) classification using Random Forest and SVM algorithms to analyze regional land use.
 
 skills:
   - title: AI & LLM

@@ -161,6 +161,11 @@ p {
 
     h2 {
         font-size: 13px;
+        margin-top: 8px;
+    }
+
+    li {
+        margin-bottom: 1px;
     }
 
     h3 {
